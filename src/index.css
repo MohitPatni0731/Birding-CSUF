@@ -1,0 +1,151 @@
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem; /* Standardized border radius */
+
+    /* Light Theme - Refined Nature Inspired Palette */
+    --background: 0 0% 99%; /* Brighter, cleaner off-white */
+    --foreground: 220 15% 25%; /* Softer, deep blue-gray for text */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 25%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 25%;
+    
+    --primary: 155 55% 45%; /* Slightly desaturated, calming green */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 30% 90%; /* Light, airy blue-gray */
+    --secondary-foreground: 220 15% 30%;
+    
+    --muted: 220 20% 95%; /* Very light gray for subtle backgrounds */
+    --muted-foreground: 220 10% 50%;
+    
+    --accent: 35 70% 55%; /* Warm, inviting amber/gold */
+    --accent-foreground: 220 15% 15%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 88%; /* Softer, less prominent border */
+    --input: 220 15% 96%;
+    --ring: 155 50% 55%; /* Primary color for focus rings */
+  }
+
+  .dark {
+    /* Dark Theme - Deep Ocean & Starlight Palette */
+    --background: 220 25% 8%; /* Very dark, deep blue */
+    --foreground: 210 20% 92%;
+
+    --card: 220 22% 12%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 160 60% 60%; /* Brighter, ethereal teal */
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 210 18% 20%;
+    --secondary-foreground: 210 15% 85%; 
+
+    --muted: 210 15% 15%;
+    --muted-foreground: 210 15% 70%; 
+
+    --accent: 45 65% 60%; /* Muted, warm gold */
+    --accent-foreground: 220 15% 98%;
+
+    --destructive: 0 65% 50%; 
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 210 15% 25%;
+    --input: 210 15% 18%;
+    --ring: 160 55% 65%;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* Adjusted for potentially taller nav */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', sans-serif; /* Default font */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+    font-family: 'Lora', serif; /* Heading font */
+  }
+  
+  /* Custom scrollbar for a refined look */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--muted) / 0.5); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 10px; }
+  .dark ::-webkit-scrollbar-thumb { background: hsl(var(--border)); }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.7); }
+
+  ::selection { background: hsl(var(--primary) / 0.25); color: hsl(var(--primary-foreground)); }
+  .dark ::selection { background: hsl(var(--primary) / 0.35); }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring) / 0.7);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+}
+
+@layer components {
+  .nav-link-base {
+    @apply relative transition-colors duration-200 py-2 px-1 text-base font-light;
+  }
+  .nav-link-underline {
+    @apply absolute bottom-0 left-0 w-0 h-[1.5px] group-hover:w-full transition-all duration-300;
+  }
+
+  .section-padding {
+    @apply py-24 sm:py-32 px-4 sm:px-6 lg:px-8;
+  }
+
+  .content-max-width {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .card-base {
+    @apply bg-card border border-border rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out;
+  }
+  .dark .card-base {
+     @apply border-border/70;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
+  
+  .hero-text-reveal > .hero-text-reveal-item {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroTextItemReveal 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  }
+  .hero-text-reveal-delay-1 { animation-delay: 0.08s !important; }
+  .hero-text-reveal-delay-2 { animation-delay: 0.16s !important; }
+  .hero-text-reveal-delay-3 { animation-delay: 0.24s !important; }
+
+  @keyframes heroTextItemReveal { to { opacity: 1; transform: translateY(0); } }
+}

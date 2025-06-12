@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSUF Birdwatching Tours - Discover Campus Wildlife</title>
+    <meta name="description" content="Join guided birdwatching tours at California State University, Fullerton. Explore campus wildlife and discover the diverse bird species that call CSUF home." />
+    <meta name="author" content="CSUF Birdwatching Tours" />
+    <meta name="keywords" content="birdwatching, CSUF, California State University Fullerton, campus tours, wildlife, birds, nature" />
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="CSUF Birdwatching Tours - Discover Campus Wildlife" />
+    <meta property="og:description" content="Join guided birdwatching tours at California State University, Fullerton. Explore campus wildlife and discover diverse bird species." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=1200" />
+
+    <!-- Twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSUF Birdwatching Tours" />
+    <meta name="twitter:description" content="Discover campus wildlife through guided birdwatching tours at Cal State Fullerton" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=1200" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/placeholder.svg" type="image/svg+xml">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      // Parallax effect for hero section
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.parallax');
+        if (parallax) {
+          const speed = scrolled * 0.5;
+          parallax.style.transform = `translateY(${speed}px)`;
+        }
+      });
+
+      // Smooth reveal animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
