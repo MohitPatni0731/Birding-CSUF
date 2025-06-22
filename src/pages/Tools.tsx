@@ -99,109 +99,38 @@ const gear = [
   {
     name: 'Binoculars',
     icon: <Binoculars className="h-6 w-6" />, 
-    desc: 'Essential for spotting distant birds clearly and observing fine details.',
+    desc: 'Standard Issue 8x25 Waterproof Binoculars - Perfect for students and beginners.',
     category: 'Essential',
-    cheap: 'https://www.amazon.com/s?k=budget+binoculars+bird+watching+under+50',
-    expensive: 'https://www.amazon.com/s?k=zeiss+swarovski+leica+binoculars+bird+watching',
+    link: 'https://www.nocsprovisions.com/products/standard-issue-8x25-waterproof-binoculars?variant=47377495654679',
+    additionalResource: 'https://www.audubon.org/magazine/category-get-game',
     color: 'from-blue-500 to-indigo-600'
   },
   {
     name: 'Field Guide',
     icon: <Book className="h-6 w-6" />, 
-    desc: 'Comprehensive guide to identify birds in your region.',
+    desc: 'Sibley\'s Backyard Birds of Southern California or Peterson Field Guide to Birds of Western North America.',
     category: 'Essential',
-    cheap: 'https://www.amazon.com/s?k=sibley+guide+birds+paperback',
-    expensive: 'https://www.amazon.com/s?k=national+geographic+birds+north+america+deluxe',
+    link: 'https://www.sibleyguides.com/product/sibleys-backyard-birds-of-southern-california/',
+    additionalInfo: 'Peterson Field Guide to Birds of Western North America (alternative)',
     color: 'from-green-500 to-emerald-600'
   },
   {
     name: 'Camera',
     icon: <Camera className="h-6 w-6" />, 
-    desc: 'Capture stunning photos of your bird discoveries.',
+    desc: 'Nikon Coolpix P950 - Excellent zoom capabilities for bird photography.',
     category: 'Photography',
-    cheap: 'https://www.amazon.com/s?k=canon+powershot+sx70+bird+photography',
-    expensive: 'https://www.amazon.com/s?k=canon+r5+600mm+lens+bird+photography',
+    link: 'https://www.nikonusa.com/p/coolpix-p950/26532/overview',
     color: 'from-purple-500 to-pink-600'
-  },
-  {
-    name: 'Tripod',
-    icon: <Image className="h-6 w-6" />, 
-    desc: 'Stabilize your camera for sharp, professional shots.',
-    category: 'Photography',
-    cheap: 'https://www.amazon.com/s?k=lightweight+tripod+under+100',
-    expensive: 'https://www.amazon.com/s?k=gitzo+carbon+fiber+tripod+professional',
-    color: 'from-gray-500 to-slate-600'
-  },
-  {
-    name: 'Sun Hat',
-    icon: <Sun className="h-6 w-6" />, 
-    desc: 'Wide-brim protection for long hours in the field.',
-    category: 'Clothing',
-    cheap: 'https://www.amazon.com/s?k=wide+brim+sun+hat+hiking+under+25',
-    expensive: 'https://www.amazon.com/s?k=tilley+hat+sun+protection+premium',
-    color: 'from-yellow-500 to-orange-600'
-  },
-  {
-    name: 'Hiking Shoes',
-    icon: <Footprints className="h-6 w-6" />, 
-    desc: 'Comfortable, waterproof shoes for any terrain.',
-    category: 'Clothing',
-    cheap: 'https://www.amazon.com/s?k=merrell+hiking+shoes+waterproof+under+100',
-    expensive: 'https://www.amazon.com/s?k=salomon+hiking+boots+gore+tex+premium',
-    color: 'from-amber-500 to-orange-600'
-  },
-  {
-    name: 'Rain Jacket',
-    icon: <CloudRain className="h-6 w-6" />, 
-    desc: 'Lightweight, breathable protection from the elements.',
-    category: 'Clothing',
-    cheap: 'https://www.amazon.com/s?k=packable+rain+jacket+hiking+under+50',
-    expensive: 'https://www.amazon.com/s?k=patagonia+arcteryx+rain+jacket+gore+tex',
-    color: 'from-blue-500 to-cyan-600'
-  },
-  {
-    name: 'Backpack',
-    icon: <Backpack className="h-6 w-6" />, 
-    desc: 'Organized storage for all your birding gear.',
-    category: 'Accessories',
-    cheap: 'https://www.amazon.com/s?k=hiking+daypack+30l+under+60',
-    expensive: 'https://www.amazon.com/s?k=osprey+gregory+premium+hiking+backpack',
-    color: 'from-teal-500 to-green-600'
-  },
-  {
-    name: 'Smartphone Adapter',
-    icon: <Smartphone className="h-6 w-6" />, 
-    desc: 'Connect your phone to binoculars for digiscoping.',
-    category: 'Accessories',
-    cheap: 'https://www.amazon.com/s?k=smartphone+binocular+adapter+universal',
-    expensive: 'https://www.amazon.com/s?k=swarovski+zeiss+smartphone+adapter+premium',
-    color: 'from-indigo-500 to-purple-600'
-  },
-  {
-    name: 'Insect Repellent',
-    icon: <Bug className="h-6 w-6" />, 
-    desc: 'DEET-free, natural protection from bugs.',
-    category: 'Accessories',
-    cheap: 'https://www.amazon.com/s?k=natural+insect+repellent+deet+free',
-    expensive: 'https://www.amazon.com/s?k=premium+insect+repellent+permethrin+clothing',
-    color: 'from-green-500 to-lime-600'
-  },
-  {
-    name: 'Water Bottle',
-    icon: <Droplet className="h-6 w-6" />, 
-    desc: 'Insulated bottle to keep drinks at perfect temperature.',
-    category: 'Accessories',
-    cheap: 'https://www.amazon.com/s?k=insulated+water+bottle+32oz+under+30',
-    expensive: 'https://www.amazon.com/s?k=hydro+flask+yeti+premium+water+bottle',
-    color: 'from-cyan-500 to-blue-600'
   },
   {
     name: 'Field Notebook',
     icon: <NotebookPen className="h-6 w-6" />, 
-    desc: 'Waterproof notebook for recording observations.',
-    category: 'Accessories',
-    cheap: 'https://www.amazon.com/s?k=waterproof+field+notebook+birding',
-    expensive: 'https://www.amazon.com/s?k=rite+in+rain+premium+field+notebook',
+    desc: 'Rite in the Rain Birder\'s Journal or Sibley Birder\'s Life List and Field Diary.',
+    category: 'Essential',
+    link: 'https://www.riteintherain.com/no-195-birders-journal?search=195',
+    additionalInfo: 'The Sibley Birder\'s Life List and Field Diary',
+    additionalLink: 'https://www.birdcollective.com/collections/bird-books/products/the-sibley-birder-s-life-list-field-diary',
+    tipsLink: 'https://www.allaboutbirds.org/news/take-note-tips-for-keeping-a-field-notebook/',
     color: 'from-slate-500 to-gray-600'
   }
 ];
@@ -211,7 +140,7 @@ const Tools = () => {
   const [scrollY, setScrollY] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Essential', 'Photography', 'Clothing', 'Accessories'];
+  const categories = ['All', 'Essential', 'Photography'];
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'home') {
@@ -410,7 +339,7 @@ const Tools = () => {
               Essential Gear
             </h2>
             <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-              Choose your birding essentials based on your budget and experience level.
+              Student-friendly tools recommended for your birding adventures.
             </p>
             <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 mx-auto rounded-full mt-6 animate-gradient-x"></div>
           </div>
@@ -436,115 +365,83 @@ const Tools = () => {
             </div>
           </div>
 
-          {/* Budget Sections */}
-          <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
-            {/* Pocket Friendly Section */}
-            <div className="space-y-8">
-              <div className="text-center">
-                <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl mb-4 shadow-lg">
-                  <DollarSign className="h-8 w-8 text-green-600" />
-                  <div>
-                    <h3 className="text-3xl font-light text-green-700">Pocket Friendly</h3>
-                    <p className="text-sm text-green-600">Great value for beginners</p>
-                  </div>
-                  <Badge className="bg-green-500 text-white px-3 py-1">Budget</Badge>
+          {/* Student Friendly Tools Section */}
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-r from-blue-100 to-green-100 rounded-2xl mb-4 shadow-lg">
+                <DollarSign className="h-8 w-8 text-blue-600" />
+                <div>
+                  <h3 className="text-3xl font-light text-blue-700">Student Friendly Tools</h3>
+                  <p className="text-sm text-blue-600">Perfect for students and beginners</p>
                 </div>
-              </div>
-              
-              <div className="space-y-6">
-                {filteredGear.map((item, index) => (
-                  <Card key={`cheap-${item.name}`} className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2 bg-white rounded-2xl relative group" style={{ animationDelay: `${index * 100}ms` }}>
-                    {/* Gradient border effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
-                    <div className="relative bg-white rounded-2xl m-0.5">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-4">
-                          <div className={`p-3 bg-gradient-to-r ${item.color} rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            {item.icon}
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <CardTitle className="text-lg font-medium text-gray-800">{item.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{item.category}</Badge>
-                            </div>
-                            <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3">{item.desc}</CardDescription>
-                            <div className="flex items-center gap-2">
-                              <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                              <span className="text-xs text-gray-500">Budget-friendly option</span>
-                            </div>
-                          </div>
-                          <Button 
-                            asChild 
-                            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-xl px-6"
-                          >
-                            <a href={item.cheap} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                              <ShoppingCart className="h-4 w-4" />
-                              Buy
-                              <ExternalLink className="h-3 w-3" />
-                            </a>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </Card>
-                ))}
+                <Badge className="bg-blue-500 text-white px-3 py-1">Student</Badge>
               </div>
             </div>
-
-            {/* Premium Section */}
+            
             <div className="space-y-8">
-              <div className="text-center">
-                <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-r from-yellow-100 to-amber-100 rounded-2xl mb-4 shadow-lg">
-                  <Sparkles className="h-8 w-8 text-yellow-600" />
-                  <div>
-                    <h3 className="text-3xl font-light text-yellow-700">Premium</h3>
-                    <p className="text-sm text-yellow-600">Professional quality gear</p>
-                  </div>
-                  <Badge className="bg-yellow-500 text-white px-3 py-1">Pro</Badge>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                {filteredGear.map((item, index) => (
-                  <Card key={`expensive-${item.name}`} className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2 bg-white rounded-2xl relative group" style={{ animationDelay: `${index * 100 + 50}ms` }}>
-                    {/* Gradient border effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
-                    <div className="relative bg-white rounded-2xl m-0.5">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-4">
-                          <div className={`p-3 bg-gradient-to-r ${item.color} rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300 relative`}>
-                            {item.icon}
-                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <CardTitle className="text-lg font-medium text-gray-800">{item.name}</CardTitle>
-                              <Badge className="bg-yellow-100 text-yellow-700 text-xs">Premium</Badge>
-                            </div>
-                            <CardDescription className="text-sm text-gray-600 leading-relaxed mb-3">{item.desc}</CardDescription>
-                            <div className="flex items-center gap-2">
-                              {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="h-3 w-3 text-yellow-400 fill-current" />
-                              ))}
-                              <span className="text-xs text-gray-500 ml-1">Professional grade</span>
-                            </div>
-                          </div>
-                          <Button 
-                            asChild 
-                            className="bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-xl px-6"
-                          >
-                            <a href={item.expensive} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                              <Sparkles className="h-4 w-4" />
-                              Buy
-                              <ExternalLink className="h-3 w-3" />
-                            </a>
-                          </Button>
+              {filteredGear.map((item, index) => (
+                <Card key={item.name} className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2 bg-white rounded-2xl relative group" style={{ animationDelay: `${index * 100}ms` }}>
+                  {/* Gradient border effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
+                  <div className="relative bg-white rounded-2xl m-0.5">
+                    <CardContent className="p-8">
+                      <div className="flex items-start gap-6">
+                        <div className={`p-4 bg-gradient-to-r ${item.color} rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          {item.icon}
                         </div>
-                      </CardContent>
-                    </div>
-                  </Card>
-                ))}
-              </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-3">
+                            <CardTitle className="text-xl font-medium text-gray-800">{item.name}</CardTitle>
+                            <Badge variant="outline" className="text-xs">{item.category}</Badge>
+                          </div>
+                          <CardDescription className="text-base text-gray-600 leading-relaxed mb-4">{item.desc}</CardDescription>
+                          
+                          {/* Main Link */}
+                          <div className="space-y-3">
+                            <Button 
+                              asChild 
+                              className="bg-gradient-to-r from-blue-500 to-green-600 hover:from-blue-600 hover:to-green-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-xl px-6"
+                            >
+                              <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                <ShoppingCart className="h-4 w-4" />
+                                View Product
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            </Button>
+                            
+                            {/* Additional Resources */}
+                            {item.additionalResource && (
+                              <div className="text-sm text-gray-600">
+                                Additional resource: <a href={item.additionalResource} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Getting started guide</a>
+                              </div>
+                            )}
+                            
+                            {item.additionalInfo && (
+                              <div className="text-sm text-gray-600">
+                                Alternative: {item.additionalInfo}
+                                {item.additionalLink && (
+                                  <span> - <a href={item.additionalLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">View here</a></span>
+                                )}
+                              </div>
+                            )}
+                            
+                            {item.tipsLink && (
+                              <div className="text-sm text-gray-600">
+                                Tips: <a href={item.tipsLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">How to keep field notes</a>
+                              </div>
+                            )}
+                            
+                            <div className="flex items-center gap-2 pt-2">
+                              <Star className="h-4 w-4 text-blue-400 fill-current" />
+                              <span className="text-xs text-gray-500">Student recommended</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
 
