@@ -259,7 +259,7 @@ const Index = () => {
       title: "Arboretum's Natural Treasures",
       subtitle: "A Deep Dive into CSUF's Premier Birding Hotspot",
       time: "8:00 AM - 11:00 AM",
-      duration: "3h",
+      duration: "60 min",
       difficulty: "Moderate",
       speciesFocus: ["Hawks", "Owls", "Woodpeckers", "Waterfowl", "Native Songbirds"],
       image: "/ARB_lake.jpg", // Updated image
@@ -290,7 +290,7 @@ const Index = () => {
       title: "Campus Core & Urban Adapters",
       subtitle: "Birding Amongst CSUF's Iconic Buildings",
       time: "10:00 AM / 2:00 PM",
-      duration: "1.5h",
+      duration: "30 min",
       difficulty: "Easy",
       speciesFocus: ["Mourning Doves", "Northern Mockingbirds", "House Finches", "Black Phoebes"],
       image: "/LIB_day.jpg", // Updated image
@@ -320,13 +320,13 @@ const Index = () => {
       title: "Evening Chorus at the Arboretum",
       subtitle: "Sunset Birdsong and Roosting Behaviors",
       time: "5:30 PM (Seasonal)",
-      duration: "2h",
+      duration: "60 min",
       difficulty: "Easy",
-      speciesFocus: ["Owls (potential)", "Robins", "Blackbirds", "Roosting species"],
+      speciesFocus: ["Owls (potential)", "Robins", "Roosting species"],
       image: "/ARB_lake.jpg", // Updated image
       category: "arboretum",
       color: "from-purple-400 to-pink-500",
-      description: "Witness the beauty of birds preparing for night and possibly spot some crepuscular species as sunset approaches in the Arboretum.",
+      description: "View birds preparing for the night as sunset approaches in the Arboretum.",
       details: {
         meetingPoint: "Arboretum Pavilion",
         guide: "Arboretum Docent",
@@ -338,7 +338,7 @@ const Index = () => {
       timeOfDayPreference: ["Evening"],
       environmentType: "Nature",
        route: [
-        { name: "Arboretum Pavilion", instructions: "Gather as the sun begins to set. Discuss crepuscular bird activity.", birdsToSpot: ["American Robin", "Northern Mockingbird"] },
+        { name: "Arboretum Pavilion", instructions: "Gather as the sun begins to set. Discuss roosting bird behavior.", birdsToSpot: ["American Robin", "Northern Mockingbird"] },
         { name: "Edge of Woodlands", instructions: "Listen for owls calling and observe birds settling in for the night.", birdsToSpot: ["Great Horned Owl (listen)", "Black-crowned Night-Heron (near water)"] },
         { name: "Open Meadow Viewpoint", instructions: "Watch for late insectivores and any aerial displays.", birdsToSpot: ["Swallows (seasonal)", "Bats (non-avian!)"] },
         { name: "Quiet Pond Stroll", instructions: "Observe any remaining waterfowl activity as light fades.", birdsToSpot: ["Mallard", "American Coot"] }
@@ -350,7 +350,7 @@ const Index = () => {
       title: "Sustainable Landscapes Birding",
       subtitle: "Birds Thriving in CSUF's Eco-Friendly Zones",
       time: "Afternoon (Check Schedule)",
-      duration: "1.5h",
+      duration: "30 min",
       difficulty: "Easy",
       speciesFocus: ["Native Sparrows", "Lesser Goldfinch", "Bushtit", "Pollinator-attracted birds"],
       image: "/VA_icecream.jpg", // Updated image
@@ -723,12 +723,13 @@ Personal Observations:
             </div>
             
             <div className="hidden md:flex items-center space-x-6">
-              {['Tours', 'Species', 'AI Magic', 'Tools', 'Checklist', 'Contact'].map((item, index) => (
+              {['Tours', 'AI Magic', 'Tools', 'Checklist', 'About Us', 'Contact'].map((item, index) => (
                 <button 
                   key={item}
                   onClick={() => {
-                    if (item === 'Checklist') setShowChecklistModal(true);
+                    if (item === 'Checklist') window.location.href = '/checklist';
                     else if (item === 'Tools') window.location.href = '/tools';
+                    else if (item === 'About Us') window.location.href = '/about-us';
                     else scrollToSection(item.toLowerCase().replace(/\s+/g, '-'));
                   }}
                   className={`relative px-4 py-2 rounded-lg transition-all duration-300 group ${navLinkColorClass} hover:scale-105`}
@@ -754,12 +755,13 @@ Personal Observations:
 
           {isMenuOpen && (
             <div className={`md:hidden pt-3 pb-2 space-y-1 animate-fade-in-up border-t backdrop-blur-lg ${scrollY > 50 ? "border-border bg-white/90" : "border-white/20 bg-black/20"}`}>
-              {['Tours', 'Species', 'AI Magic', 'Tools', 'Checklist', 'Contact'].map((item) => (
+              {['Tours', 'AI Magic', 'Tools', 'Checklist', 'About Us', 'Contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => {
-                     if (item === 'Checklist') {setShowChecklistModal(true); setIsMenuOpen(false);}
+                     if (item === 'Checklist') {window.location.href = '/checklist'; setIsMenuOpen(false);}
                     else if (item === 'Tools') {window.location.href = '/tools'; setIsMenuOpen(false);}
+                    else if (item === 'About Us') {window.location.href = '/about-us'; setIsMenuOpen(false);}
                     else {scrollToSection(item.toLowerCase().replace(/\s+/g, '-')); setIsMenuOpen(false);}
                   }}
                   className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium hover:bg-muted/50 transition-all duration-300 hover:translate-x-2 ${navLinkColorClass}`}
@@ -1426,37 +1428,26 @@ Personal Observations:
           <h2 className="text-5xl sm:text-6xl font-extralight mb-6 tracking-tight bg-gradient-to-r from-white via-green-300 to-blue-300 bg-clip-text text-transparent">
             Get Involved
           </h2>
-          <p className="text-xl text-gray-300 font-light leading-relaxed mb-12 max-w-2xl mx-auto">
-            Ready to explore the avian wonders of CSUF? Book a tour or reach out with your questions.
+          <p className="text-xl text-gray-300 font-light leading-relaxed mb-12 max-w-3xl mx-auto">
+            Want to get involved with birding on campus and share your self-guided tour experience, or offer feedback?
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto mb-16 rounded-full"></div>
           
           <div className="space-y-10">
-            <Button
-              onClick={() => {
-                alert("Tour booking system coming soon! Please contact us via email for now.");
-                scrollToSection('contact'); 
-              }}
-              className="bg-gradient-to-r from-green-500 to-sky-600 hover:from-green-600 hover:to-sky-700 text-white px-12 py-6 rounded-full text-xl font-medium transition-all duration-500 transform hover:scale-110 hover:shadow-2xl shadow-xl border-2 border-white/20 backdrop-blur-sm group"
-            >
-              <div className="flex items-center gap-3">
-                <Calendar className="h-6 w-6 group-hover:animate-bounce" />
-                Book a Campus Tour
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-3 hover:text-green-300 transition-colors duration-300 group mb-4">
+                <Mail className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-lg font-medium text-white">Contact:</span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
-            
-            <div className="pt-8 space-y-3 text-gray-400 font-light">
-              <div className="flex items-center justify-center gap-3 hover:text-green-400 transition-colors duration-300 group">
-                <Mail className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <a href="mailto:birdtours@fullerton.edu" className="hover:underline text-lg">birdtours@fullerton.edu</a>
-              </div>
-              <div className="flex items-center justify-center gap-3 hover:text-green-400 transition-colors duration-300 group">
-                <Phone className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <a href="tel:+16572782011" className="hover:underline text-lg">(657) 278-2011</a>
-                <span className="text-sm text-gray-500">(Campus Info)</span>
-              </div>
-              <p className="text-sm mt-4 text-gray-500">Please specify "Bird Tour Inquiry" in your communication.</p>
+              <a 
+                href="mailto:mohitpatni@csu.fullerton.edu" 
+                className="text-2xl text-green-300 hover:text-green-200 font-light hover:underline transition-all duration-300 block text-center"
+              >
+                mohitpatni@csu.fullerton.edu
+              </a>
+              <p className="text-sm mt-4 text-gray-300 text-center">
+                Share your birding experiences, provide feedback, or get involved with campus birding initiatives
+              </p>
             </div>
           </div>
         </div>

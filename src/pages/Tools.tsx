@@ -95,12 +95,12 @@ const customStyles = `
   }
 `;
 
-const gear = [
+// Student-friendly tools only
+const studentGear = [
   {
     name: 'Binoculars',
     icon: <Binoculars className="h-6 w-6" />, 
     desc: 'Standard Issue 8x25 Waterproof Binoculars - Perfect for students and beginners.',
-    category: 'Essential',
     link: 'https://www.nocsprovisions.com/products/standard-issue-8x25-waterproof-binoculars?variant=47377495654679',
     additionalResource: 'https://www.audubon.org/magazine/category-get-game',
     color: 'from-blue-500 to-indigo-600'
@@ -109,38 +109,65 @@ const gear = [
     name: 'Field Guide',
     icon: <Book className="h-6 w-6" />, 
     desc: 'Sibley\'s Backyard Birds of Southern California or Peterson Field Guide to Birds of Western North America.',
-    category: 'Essential',
     link: 'https://www.sibleyguides.com/product/sibleys-backyard-birds-of-southern-california/',
     additionalInfo: 'Peterson Field Guide to Birds of Western North America (alternative)',
     color: 'from-green-500 to-emerald-600'
   },
   {
-    name: 'Camera',
-    icon: <Camera className="h-6 w-6" />, 
-    desc: 'Nikon Coolpix P950 - Excellent zoom capabilities for bird photography.',
-    category: 'Photography',
-    link: 'https://www.nikonusa.com/p/coolpix-p950/26532/overview',
-    color: 'from-purple-500 to-pink-600'
-  },
-  {
     name: 'Field Notebook',
     icon: <NotebookPen className="h-6 w-6" />, 
     desc: 'Rite in the Rain Birder\'s Journal or Sibley Birder\'s Life List and Field Diary.',
-    category: 'Essential',
     link: 'https://www.riteintherain.com/no-195-birders-journal?search=195',
     additionalInfo: 'The Sibley Birder\'s Life List and Field Diary',
     additionalLink: 'https://www.birdcollective.com/collections/bird-books/products/the-sibley-birder-s-life-list-field-diary',
     tipsLink: 'https://www.allaboutbirds.org/news/take-note-tips-for-keeping-a-field-notebook/',
     color: 'from-slate-500 to-gray-600'
+  },
+  {
+    name: 'Camera',
+    icon: <Camera className="h-6 w-6" />, 
+    desc: 'Nikon Coolpix P950 - Excellent zoom capabilities for bird photography.',
+    link: 'https://www.nikonusa.com/p/coolpix-p950/26532/overview',
+    color: 'from-purple-500 to-pink-600'
+  }
+];
+
+const additionalResources = [
+  {
+    name: 'Birding at Bolsa Chica',
+    url: 'https://bolsachica.org/birds/',
+    description: 'Discover birds at this nearby ecological reserve'
+  },
+  {
+    name: 'Fullerton Arboretum',
+    url: 'https://arboretum.fullerton.edu/',
+    description: 'Campus botanical garden with diverse bird species'
+  },
+  {
+    name: 'eBird at Fullerton Arboretum',
+    url: 'https://ebird.org/hotspot/L789249/bird-list',
+    description: 'Real-time bird sightings at the campus arboretum'
+  },
+  {
+    name: 'Birding for a Better World',
+    url: 'https://bookshop.org/p/books/the-feminist-bird-club-s-birding-for-a-better-world-a-guide-to-finding-joy-and-community-in-nature-molly-adams/19811099?ean=9781797223339&next=t&affiliate=2057',
+    description: 'A guide to finding joy and community in nature'
+  },
+  {
+    name: 'Birdpedia',
+    url: 'https://www.birdcollective.com/collections/bird-books/products/birdpedia',
+    description: 'Comprehensive bird reference guide'
+  },
+  {
+    name: 'Life List: Poets with Birds',
+    url: 'https://www.poetrynw.org/life-list/',
+    description: 'Poetry and literature inspired by birds'
   }
 ];
 
 const Tools = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const categories = ['All', 'Essential', 'Photography'];
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'home') {
@@ -170,10 +197,6 @@ const Tools = () => {
   const navIconColorClass = scrollY > 50 ? "text-primary" : "text-white";
   const mobileMenuIconColorClass = scrollY > 50 ? "bg-foreground/70" : "bg-white";
 
-  const filteredGear = selectedCategory === 'All' 
-    ? gear 
-    : gear.filter(item => item.category === selectedCategory);
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative font-sans">
       {/* Inject custom styles */}
@@ -194,13 +217,15 @@ const Tools = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-6">
-              {['Tours', 'Species', 'AI Magic', 'Tools', 'Checklist', 'Contact'].map((item, index) => (
+              {['Tours', 'AI Magic', 'Tools', 'Checklist', 'About Us', 'Contact'].map((item, index) => (
                 <button 
                   key={item}
                   onClick={() => {
                     if (item === 'Checklist') {
-                      // Navigate to main page and open checklist modal
-                      window.location.href = '/#checklist';
+                      window.location.href = '/checklist';
+                    }
+                    else if (item === 'About Us') {
+                      window.location.href = '/about-us';
                     }
                     else if (item === 'Tools') scrollToSection('tools');
                     else window.location.href = `/#${item.toLowerCase().replace(/\s+/g, '-')}`;
@@ -228,12 +253,16 @@ const Tools = () => {
 
           {isMenuOpen && (
             <div className={`md:hidden pt-3 pb-2 space-y-1 animate-fade-in-up border-t backdrop-blur-lg ${scrollY > 50 ? "border-border bg-white/90" : "border-white/20 bg-black/20"}`}>
-              {['Tours', 'Species', 'AI Magic', 'Tools', 'Checklist', 'Contact'].map((item) => (
+              {['Tours', 'AI Magic', 'Tools', 'Checklist', 'About Us', 'Contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => {
                     if (item === 'Checklist') {
-                      window.location.href = '/#checklist';
+                      window.location.href = '/checklist';
+                      setIsMenuOpen(false);
+                    }
+                    else if (item === 'About Us') {
+                      window.location.href = '/about-us';
                       setIsMenuOpen(false);
                     }
                     else if (item === 'Tools') {scrollToSection('tools'); setIsMenuOpen(false);}
@@ -280,13 +309,13 @@ const Tools = () => {
           <div className="space-y-8 hero-text-reveal">
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-white leading-tight tracking-tight [text-shadow:_3px_4px_8px_rgb(0_0_0_/_60%)] animate-fade-in-up">
-                Birding
+                Student-Friendly
                 <span className="mt-2 block text-transparent bg-gradient-to-r from-emerald-300 via-sky-300 to-purple-400 bg-clip-text font-semibold [text-shadow:none] animate-gradient-x">
-                  Tools & Gear
+                  Birding Tools
                 </span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-200 font-light max-w-3xl mx-auto leading-relaxed [text-shadow:_1px_2px_4px_rgb(0_0_0_/_50%)] animate-fade-in-up animation-delay-500">
-                Discover the essential equipment for your birdwatching adventures, from budget-friendly basics to premium professional gear.
+                Affordable and beginner-friendly equipment to start your birdwatching journey at CSUF.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
@@ -322,7 +351,7 @@ const Tools = () => {
         </div>
       </section>
 
-      {/* Enhanced Tools Section */}
+      {/* Student-Friendly Tools Section */}
       <section id="tools" className="py-28 sm:py-36 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -333,66 +362,31 @@ const Tools = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-block p-2 bg-gradient-to-r from-green-100 to-blue-100 rounded-full mb-6">
-              <ShoppingCart className="h-8 w-8 text-green-600 animate-bounce" />
+              <DollarSign className="h-8 w-8 text-green-600 animate-bounce" />
             </div>
             <h2 className="text-5xl sm:text-7xl font-extralight text-gray-800 mb-6 tracking-tighter bg-gradient-to-r from-gray-800 via-green-700 to-blue-700 bg-clip-text text-transparent">
-              Essential Gear
+              Student-Friendly Tools
             </h2>
             <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-              Student-friendly tools recommended for your birding adventures.
+              Perfect for students and beginners on a budget.
             </p>
             <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 mx-auto rounded-full mt-6 animate-gradient-x"></div>
           </div>
           
-          {/* Enhanced filter buttons */}
-          <div className="flex justify-center mb-12 sm:mb-16">
-            <div className="flex bg-white/80 backdrop-blur-lg p-2 rounded-2xl shadow-xl border border-gray-200/50 flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 sm:px-8 py-3 rounded-xl transition-all duration-500 text-sm font-medium relative flex items-center gap-3 group ${selectedCategory === category
-                      ? 'bg-gradient-to-r from-gray-800 to-gray-700 text-white shadow-lg transform scale-105'
-                      : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100/80'
-                    }`}
-                >
-                  {category}
-                  {selectedCategory === category && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-xl animate-pulse"></div>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Student Friendly Tools Section */}
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-r from-blue-100 to-green-100 rounded-2xl mb-4 shadow-lg">
-                <DollarSign className="h-8 w-8 text-blue-600" />
-                <div>
-                  <h3 className="text-3xl font-light text-blue-700">Student Friendly Tools</h3>
-                  <p className="text-sm text-blue-600">Perfect for students and beginners</p>
-                </div>
-                <Badge className="bg-blue-500 text-white px-3 py-1">Student</Badge>
-              </div>
-            </div>
-            
-            <div className="space-y-8">
-              {filteredGear.map((item, index) => (
-                <Card key={item.name} className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2 bg-white rounded-2xl relative group" style={{ animationDelay: `${index * 100}ms` }}>
-                  {/* Gradient border effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
-                  <div className="relative bg-white rounded-2xl m-0.5">
+          {/* Student Tools Grid */}
+          <div className="max-w-6xl mx-auto">            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {studentGear.map((item, index) => (
+                <Card key={item.name} className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2 bg-white rounded-2xl" style={{ animationDelay: `${index * 100}ms` }}>
                     <CardContent className="p-8">
                       <div className="flex items-start gap-6">
-                        <div className={`p-4 bg-gradient-to-r ${item.color} rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`p-4 bg-gradient-to-r ${item.color} rounded-xl text-white shadow-lg transition-transform duration-300`}>
                           {item.icon}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-3">
                             <CardTitle className="text-xl font-medium text-gray-800">{item.name}</CardTitle>
-                            <Badge variant="outline" className="text-xs">{item.category}</Badge>
+                            <Badge className="bg-blue-500 text-white px-3 py-1">Student</Badge>
                           </div>
                           <CardDescription className="text-base text-gray-600 leading-relaxed mb-4">{item.desc}</CardDescription>
                           
@@ -431,32 +425,63 @@ const Tools = () => {
                               </div>
                             )}
                             
-                            <div className="flex items-center gap-2 pt-2">
-                              <Star className="h-4 w-4 text-blue-400 fill-current" />
-                              <span className="text-xs text-gray-500">Student recommended</span>
-                            </div>
+
                           </div>
                         </div>
                       </div>
                     </CardContent>
-                  </div>
                 </Card>
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Call to Action */}
-          <div className="text-center mt-20">
-            <div className="inline-block p-8 bg-gradient-to-r from-blue-50 to-green-50 rounded-3xl shadow-xl border border-blue-100">
-              <h3 className="text-2xl font-light text-gray-800 mb-4">Ready to Start Your Birding Adventure?</h3>
-              <p className="text-gray-600 mb-6 max-w-md mx-auto">Join our guided tours and put your new gear to the test!</p>
-              <Button 
-                onClick={() => window.location.href = '/'}
-                className="bg-gradient-to-r from-blue-500 to-green-600 hover:from-blue-600 hover:to-green-700 text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-500"
-              >
-                <Bird className="mr-3 h-6 w-6" />
-                Explore Tours
-              </Button>
+      {/* Additional Resources Section */}
+      <section className="py-28 sm:py-36 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-green-50 via-blue-50/30 to-purple-50/30">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16 sm:mb-20">
+            <div className="inline-block p-2 bg-gradient-to-r from-green-100 to-blue-100 rounded-full mb-6">
+              <Book className="h-8 w-8 text-green-600 animate-bounce" />
+            </div>
+            <h2 className="text-5xl sm:text-7xl font-extralight text-gray-800 mb-6 tracking-tighter bg-gradient-to-r from-gray-800 via-green-700 to-blue-700 bg-clip-text text-transparent">
+              Additional Resources
+            </h2>
+            <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
+              Explore these helpful resources to enhance your birding knowledge and experience.
+            </p>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 mx-auto rounded-full mt-6 animate-gradient-x"></div>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {additionalResources.map((resource, index) => (
+                <Card key={resource.name} className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 bg-white rounded-xl group">
+                  <CardContent className="p-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <ExternalLink className="h-5 w-5 text-blue-500" />
+                        <CardTitle className="text-lg font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                          {resource.name}
+                        </CardTitle>
+                      </div>
+                      <CardDescription className="text-gray-600 leading-relaxed">
+                        {resource.description}
+                      </CardDescription>
+                      <Button 
+                        asChild 
+                        variant="outline"
+                        className="w-full border-blue-200 text-blue-600 hover:bg-blue-50 hover:border-blue-300 transition-all duration-300"
+                      >
+                        <a href={resource.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                          Visit Resource
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
