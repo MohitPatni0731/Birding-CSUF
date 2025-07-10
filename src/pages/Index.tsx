@@ -162,11 +162,8 @@ const customStyles = `
 `;
 
 // !! IMPORTANT SECURITY WARNING !!
-// Do NOT use API keys directly in frontend code for production applications.
-// This is for demonstration purposes ONLY.
-// In a real application, this key should be kept on a secure backend server,
-// and your frontend should make requests to your backend, which then calls the Gemini API.
-const GEMINI_API_KEY = "AIzaSyAhgRnn_yJhbuiaQcoZMppaY8LnpItmdgI"; // User-provided API key
+// API key now loaded from environment variables for security
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 interface Tour {
   id: number;
@@ -1475,7 +1472,7 @@ Personal Observations:
           <p className="text-gray-500 text-sm font-light leading-relaxed max-w-3xl mx-auto">
             © {new Date().getFullYear()} California State University, Fullerton. All Rights Reserved. <br />
             Landscape and bird information based on public CSUF resources and general ornithological knowledge. <br />
-            <span className="text-red-500 font-medium">GEMINI_API_KEY is for demonstration purposes only. Not for production.</span>
+            <span className="text-green-600 font-medium">API keys are securely managed via environment variables.</span>
           </p>
         </div>
       </footer>

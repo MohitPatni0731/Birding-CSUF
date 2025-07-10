@@ -82,7 +82,7 @@ const Checklist = () => {
       
       try {
         // Your eBird API key
-        const API_KEY = 'ndsvfikllinn';
+        const API_KEY = import.meta.env.VITE_EBIRD_API_KEY;
         
         // Fullerton Arboretum coordinates
         const lat = 33.8831;

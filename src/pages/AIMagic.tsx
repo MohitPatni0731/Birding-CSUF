@@ -107,10 +107,8 @@ const birdSpecies: BirdSpecies[] = [
   { name: "Wrentit", scientificName: "Chamaea fasciata", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Wrentit.jpg/800px-Wrentit.jpg", description: "Small, plain grayish-brown bird with a long tail often cocked upwards; more often heard than seen.", funFact: "The Wrentit's song is a series of sharp notes that accelerate into a trill, often described as a 'bouncing ball'.", habitat: "Dense chaparral and coastal scrub; found in the Arboretum's native plant areas." }
 ];
 
-// !! IMPORTANT SECURITY WARNING !!
-// Do NOT use API keys directly in frontend code for production applications.
-// This is for demonstration purposes ONLY.
-const GEMINI_API_KEY = "AIzaSyAhgRnn_yJhbuiaQcoZMppaY8LnpItmdgI"; // User-provided API key
+// API key now loaded from environment variables for security
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 const AIMagic = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
