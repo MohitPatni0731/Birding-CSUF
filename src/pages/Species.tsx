@@ -90,14 +90,14 @@ interface BirdSpecies {
 
 const birdSpecies: BirdSpecies[] = [
   { 
-    name: "Red-tailed Hawk", 
-    scientificName: "Buteo jamaicensis", 
-    image: "https://images.unsplash.com/photo-1530689300999-e09e32919d70?w=400", 
-    description: "Large raptor with a broad, reddish tail, often seen soaring or perched high.", 
-    funFact: "Red-tailed Hawks have incredible eyesight, about 8 times sharper than humans!", 
-    habitat: "Open country, woodlands, often seen soaring over campus or perched on tall structures.",
-    size: "17-22 inches wingspan",
-    diet: "Small mammals, birds, reptiles",
+    name: "Red-shouldered Hawk", 
+    scientificName: "Buteo lineatus", 
+    image: "/red shouldered hawk.jpg", 
+    description: "Medium-sized hawk with distinctive reddish shoulder patches and banded tail.", 
+    funFact: "Red-shouldered Hawks have incredible eyesight, about 8 times sharper than humans!", 
+    habitat: "Wooded areas near water, often seen in the Arboretum.",
+    size: "15-19 inches wingspan",
+    diet: "Small mammals, birds, reptiles, amphibians",
     behavior: "Soars in wide circles, perches on high vantage points",
     seasonality: "Year-round resident",
     rarity: "Common",
@@ -106,7 +106,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Anna's Hummingbird", 
     scientificName: "Calypte anna", 
-    image: "https://images.unsplash.com/photo-1595460004628-24f63786700e?w=400", 
+    image: "/anna hummingbird.jpg", 
     description: "Medium-sized hummingbird with iridescent rose-pink feathers on the male's head and throat.", 
     funFact: "Anna's Hummingbirds are the only North American hummingbird species that regularly overwinters in northern latitudes.", 
     habitat: "Gardens, parks, and anywhere with nectar-producing flowers.",
@@ -118,29 +118,29 @@ const birdSpecies: BirdSpecies[] = [
     category: "Hummingbird"
   },
   { 
-    name: "American Robin", 
-    scientificName: "Turdus migratorius", 
-    image: "https://images.unsplash.com/photo-1552533700-8889fcc9829b?w=400", 
-    description: "Familiar songbird with a gray back, rusty orange breast, and a cheerful song.", 
-    funFact: "While often seen on lawns tugging at earthworms, American Robins also eat a lot of fruit, especially in winter.", 
-    habitat: "Lawns, open woodlands, gardens.",
-    size: "8-11 inches",
-    diet: "Earthworms, insects, berries, fruits",
-    behavior: "Hops on ground, tilts head to listen for worms, forms winter flocks",
-    seasonality: "Year-round, more abundant in winter",
+    name: "American Crow", 
+    scientificName: "Corvus brachyrhynchos", 
+    image: "/american crow.jpg", 
+    description: "Large, all-black bird with a sturdy bill and squared tail.", 
+    funFact: "American Crows are highly intelligent and can use tools and solve complex problems.", 
+    habitat: "Diverse habitats including urban areas, farms, and woodlands.",
+    size: "15.8-20.9 inches",
+    diet: "Omnivorous - insects, small animals, eggs, carrion, fruits, seeds",
+    behavior: "Social, forms large flocks, intelligent problem solver",
+    seasonality: "Year-round resident",
     rarity: "Common",
-    category: "Songbird"
+    category: "Corvid"
   },
   { 
-    name: "Cooper's Hawk", 
-    scientificName: "Accipiter cooperii", 
-    image: "https://images.unsplash.com/photo-1609852649986-c5a3c1aa62f2?w=400", 
-    description: "Medium-sized hawk with a long, banded tail and relatively short, rounded wings.", 
-    funFact: "Cooper's Hawks primarily hunt other birds, ambushing them with swift, agile flight.", 
-    habitat: "Wooded areas, suburban parks.",
-    size: "14-20 inches wingspan",
-    diet: "Primarily birds, some small mammals",
-    behavior: "Stealthy hunter, flies through dense vegetation, ambush predator",
+    name: "Great Horned Owl", 
+    scientificName: "Bubo virginianus", 
+    image: "/great horned owl.jpg", 
+    description: "Large owl with prominent ear tufts and piercing yellow eyes.", 
+    funFact: "Great Horned Owls have a grip strength of about 300 psi - stronger than most dogs!", 
+    habitat: "Diverse habitats from forests to deserts; occasionally spotted in the Arboretum.",
+    size: "18-25 inches wingspan 3-5 feet",
+    diet: "Small mammals, birds, reptiles, amphibians",
+    behavior: "Nocturnal hunter, distinctive hooting call, excellent night vision",
     seasonality: "Year-round resident",
     rarity: "Uncommon",
     category: "Raptor"
@@ -148,7 +148,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Mourning Dove", 
     scientificName: "Zenaida macroura", 
-    image: "https://images.unsplash.com/photo-1599142315884-f6f1308030e3?w=400", 
+    image: "/mourning dove.avif", 
     description: "Slender, grayish-brown dove with black spots on its wings and a long, pointed tail.", 
     funFact: "Mourning Doves can drink brackish water, which helps them survive in arid environments.", 
     habitat: "Open country, parks, suburban areas; very common throughout campus.",
@@ -162,7 +162,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "California Scrub-Jay", 
     scientificName: "Aphelocoma californica", 
-    image: "https://images.unsplash.com/photo-1604828033713-94a000a7d401?w=400", 
+    image: "/california scrub jay.jpg", 
     description: "Blue bird with a gray back/belly and a whitish throat, known for its intelligence.", 
     funFact: "California Scrub-Jays are known to cache thousands of acorns each fall!", 
     habitat: "Oak woodlands, chaparral, suburban gardens; common in the Arboretum.",
@@ -176,7 +176,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "California Towhee", 
     scientificName: "Melozone crissalis", 
-    image: "https://images.unsplash.com/photo-1628052701689-a386d6434595?w=400", 
+    image: "/california towhee.jpg", 
     description: "Plain brown, sparrow-like bird with a rusty patch under its tail.", 
     funFact: "Masters of the 'double-scratch' feeding technique to uncover seeds and insects.", 
     habitat: "Chaparral, dense shrubs, undergrowth in gardens.",
@@ -190,7 +190,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "House Finch", 
     scientificName: "Haemorhous mexicanus", 
-    image: "https://images.unsplash.com/photo-1506220926022-cc5c4892f411?w=400", 
+    image: "/house finch.jpg", 
     description: "Small finch; males have rosy red on the head and breast.", 
     funFact: "The red coloration of male House Finches comes from pigments in their food.", 
     habitat: "Ubiquitous in urban and suburban areas, parks, and open woods.",
@@ -204,7 +204,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Lesser Goldfinch", 
     scientificName: "Spinus psaltria", 
-    image: "https://images.unsplash.com/photo-1597739254919-a3c7dc0c400a?w=400", 
+    image: "/lesser goldfinch.jpg", 
     description: "Tiny finch with a bright yellow underside; males have a black cap.", 
     funFact: "Lesser Goldfinches often feed acrobatically, hanging upside down to reach seeds.", 
     habitat: "Open woodlands, weedy fields, gardens with seed-bearing plants.",
@@ -218,7 +218,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Black Phoebe", 
     scientificName: "Sayornis nigricans", 
-    image: "https://images.unsplash.com/photo-1601275205711-a2901a576270?w=400", 
+    image: "/black phoebe.jpg", 
     description: "Small, dark flycatcher with a contrasting white belly; often wags its tail.", 
     funFact: "Frequently builds mud nests under the eaves of buildings or bridges.", 
     habitat: "Near water sources, open areas with low perches for catching insects.",
@@ -230,23 +230,23 @@ const birdSpecies: BirdSpecies[] = [
     category: "Songbird"
   },
   { 
-    name: "Yellow-rumped Warbler", 
-    scientificName: "Setophaga coronata", 
-    image: "https://images.unsplash.com/photo-1518490390990-b1911a97d1d7?w=400", 
-    description: "Common winter warbler, gray or brownish with distinctive yellow patches on its rump.", 
-    funFact: "Nicknamed 'butter-butt' for their yellow rump patch.", 
-    habitat: "Abundant in winter in various habitats with trees and shrubs.",
-    size: "4.7-5.5 inches",
-    diet: "Insects in summer, berries and seeds in winter",
-    behavior: "Active forager, flicks wings frequently, forms mixed flocks",
-    seasonality: "Winter visitor",
+    name: "Northern Mockingbird", 
+    scientificName: "Mimus polyglottos", 
+    image: "/northern mockingbird.jpg", 
+    description: "Gray bird with white wing patches, known for its incredible ability to mimic other birds.", 
+    funFact: "Northern Mockingbirds can learn and mimic over 200 different songs from other birds!", 
+    habitat: "Open areas with scattered trees, parks, suburban areas throughout campus.",
+    size: "8-10 inches",
+    diet: "Insects, berries, fruits",
+    behavior: "Excellent mimic, territorial, often sings at night",
+    seasonality: "Year-round resident",
     rarity: "Common",
     category: "Songbird"
   },
   { 
     name: "Song Sparrow", 
     scientificName: "Melospiza melodia", 
-    image: "https://images.unsplash.com/photo-1517984410560-1a739b0eba26?w=400", 
+    image: "/song sparrow.jpg", 
     description: "Streaked brown sparrow with a central dark spot on its breast; sings a varied, musical song.", 
     funFact: "Song Sparrows have many regional variations in their songs, almost like local dialects.", 
     habitat: "Dense shrubs, often near water or damp areas; found in the Arboretum and wetter landscaped parts of campus.",
@@ -260,7 +260,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Bushtit", 
     scientificName: "Psaltriparus minimus", 
-    image: "https://images.unsplash.com/photo-1549063296-488f767e9911?w=400", 
+    image: "/bushtit.jpg", 
     description: "Tiny, gray-brown bird with a long tail, almost always seen in active, chattering flocks.", 
     funFact: "Bushtits build impressive hanging sock-like nests woven from spiderwebs, moss, and lichens.", 
     habitat: "Trees and shrubs throughout campus and the Arboretum; listen for their constant high-pitched contact calls.",
@@ -272,18 +272,46 @@ const birdSpecies: BirdSpecies[] = [
     category: "Songbird"
   },
   { 
-    name: "Wrentit", 
-    scientificName: "Chamaea fasciata", 
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Wrentit.jpg/800px-Wrentit.jpg", 
-    description: "Small, plain grayish-brown bird with a long tail often cocked upwards; more often heard than seen.", 
-    funFact: "The Wrentit's song is a series of sharp notes that accelerate into a trill, often described as a 'bouncing ball'.", 
-    habitat: "Dense chaparral and coastal scrub; found in the Arboretum's native plant areas.",
-    size: "5.9-6.3 inches",
-    diet: "Insects, spiders, berries",
-    behavior: "Secretive, stays in dense brush, distinctive bouncing ball song",
+    name: "European Starling", 
+    scientificName: "Sturnus vulgaris", 
+    image: "/european starling.jpg", 
+    description: "Dark bird with iridescent plumage and a pointed yellow bill; introduced species.", 
+    funFact: "European Starlings are excellent mimics and can learn human speech and mechanical sounds.", 
+    habitat: "Urban and suburban areas, parks, agricultural fields.",
+    size: "7-9 inches",
+    diet: "Insects, fruits, seeds, garbage",
+    behavior: "Highly social, forms large flocks, aggressive at feeders",
     seasonality: "Year-round resident",
-    rarity: "Uncommon",
+    rarity: "Common",
     category: "Songbird"
+  },
+  { 
+    name: "American Coot", 
+    scientificName: "Fulica americana", 
+    image: "/american coot.jpg", 
+    description: "Dark gray waterbird with a white bill and lobed toes; often seen swimming in ponds.", 
+    funFact: "American Coots are not ducks - they're more closely related to cranes and rails!", 
+    habitat: "Ponds, lakes, marshes; commonly seen in the Arboretum pond.",
+    size: "13-17 inches",
+    diet: "Aquatic plants, algae, small fish, insects",
+    behavior: "Dives underwater for food, territorial, distinctive white bill",
+    seasonality: "Year-round resident",
+    rarity: "Common",
+    category: "Waterfowl"
+  },
+  { 
+    name: "Mallard", 
+    scientificName: "Anas platyrhynchos", 
+    image: "/mallard.webp", 
+    description: "Classic duck species; males have iridescent green heads and white neck rings.", 
+    funFact: "Mallards are the ancestors of most domestic duck breeds.", 
+    habitat: "Ponds, lakes, streams; regularly seen in the Arboretum pond and water features.",
+    size: "19.7-25.6 inches",
+    diet: "Aquatic plants, seeds, insects, small crustaceans",
+    behavior: "Dabbling duck, tips forward to feed underwater, highly adaptable",
+    seasonality: "Year-round resident",
+    rarity: "Common",
+    category: "Waterfowl"
   }
 ];
 
@@ -570,12 +598,22 @@ const Species = () => {
                 {/* Gradient border on hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-sky-400 via-green-400 to-yellow-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
                 <div className="relative bg-white rounded-xl m-0.5">
-                  <div className="relative overflow-hidden rounded-t-xl">
-                    <img
-                      src={bird.image}
-                      alt={bird.name}
-                      className="w-full h-36 sm:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                  <div className="relative overflow-hidden rounded-t-xl bg-gradient-to-br from-gray-50 to-blue-50/20">
+                    <div className="aspect-[4/3] relative">
+                      <img
+                        src={bird.image}
+                        alt={bird.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        style={{ 
+                          objectPosition: bird.name === 'Red-shouldered Hawk' ? 'center top' :
+                                         bird.name === 'American Crow' ? 'center center' :
+                                         bird.name === 'Great Horned Owl' ? 'center top' :
+                                         bird.name === 'California Towhee' ? 'center center' :
+                                         bird.name === 'House Finch' ? 'center top' :
+                                         'center center'
+                        }}
+                      />
+                    </div>
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     {/* Floating sparkle effect */}

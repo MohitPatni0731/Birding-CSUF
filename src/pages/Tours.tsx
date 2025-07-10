@@ -228,6 +228,29 @@ const Tours = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedTourModal, setSelectedTourModal] = useState<Tour | null>(null);
 
+  // Bird name to image path mapping
+  const getBirdImagePath = (birdName: string): string | null => {
+    const birdImageMap: { [key: string]: string } = {
+      "Anna's Hummingbird": "/anna hummingbird.jpg",
+      "California Scrub-Jay": "/california scrub jay.jpg", 
+      "California Towhee": "/california towhee.jpg",
+      "House Finch": "/house finch.jpg",
+      "Mourning Dove": "/mourning dove.avif",
+      "Mallard": "/mallard.webp",
+      "American Coot": "/american coot.jpg",
+      "Red-shouldered Hawk": "/red shouldered hawk.jpg",
+      "Northern Mockingbird": "/northern mockingbird.jpg",
+      "Black Phoebe": "/black phoebe.jpg",
+      "American Crow": "/american crow.jpg",
+      "European Starling": "/european starling.jpg",
+      "Lesser Goldfinch": "/lesser goldfinch.jpg",
+      "Bushtit": "/bushtit.jpg",
+      "Song Sparrow": "/song sparrow.jpg",
+      "Great Horned Owl": "/great horned owl.jpg"
+    };
+    return birdImageMap[birdName] || null;
+  };
+
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'home') {
       window.location.href = '/';
@@ -612,6 +635,48 @@ const Tours = () => {
                       </Badge>
                     ))}
                   </div>
+                </div>
+
+                {/* Featured Birds Gallery */}
+                <div>
+                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                    <Camera className="h-4 w-4 text-green-600" />
+                    Featured Birds You Might Spot
+                  </h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {selectedTourModal.frequentBirds
+                      .filter(bird => getBirdImagePath(bird))
+                      .slice(0, 6)
+                      .map((bird) => {
+                        const imagePath = getBirdImagePath(bird);
+                        return (
+                          <div key={bird} className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-square">
+                            <img
+                              src={imagePath!}
+                              alt={bird}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-2 left-2 right-2">
+                              <p className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg">
+                                {bird}
+                              </p>
+                            </div>
+                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="p-1 bg-white/20 backdrop-blur-sm rounded-full">
+                                <Bird className="h-3 w-3 text-white" />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                    }
+                  </div>
+                  {selectedTourModal.frequentBirds.filter(bird => getBirdImagePath(bird)).length > 6 && (
+                    <p className="text-sm text-gray-500 mt-2 font-light">
+                      ...and {selectedTourModal.frequentBirds.length - 6} more species to discover!
+                    </p>
+                  )}
                 </div>
 
                 <div>
