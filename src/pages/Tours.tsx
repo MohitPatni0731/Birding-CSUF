@@ -231,22 +231,22 @@ const Tours = () => {
   // Bird name to image path mapping
   const getBirdImagePath = (birdName: string): string | null => {
     const birdImageMap: { [key: string]: string } = {
-      "Anna's Hummingbird": "/anna hummingbird.jpg",
-      "California Scrub-Jay": "/california scrub jay.jpg", 
-      "California Towhee": "/california towhee.jpg",
-      "House Finch": "/house finch.jpg",
-      "Mourning Dove": "/mourning dove.avif",
+      "Anna's Hummingbird": "/anna-hummingbird.jpg",
+      "California Scrub-Jay": "/california-scrub-jay.jpg", 
+      "California Towhee": "/california-towhee.jpg",
+      "House Finch": "/house-finch.jpg",
+      "Mourning Dove": "/mourning-dove.avif",
       "Mallard": "/mallard.webp",
-      "American Coot": "/american coot.jpg",
-      "Red-shouldered Hawk": "/red shouldered hawk.jpg",
-      "Northern Mockingbird": "/northern mockingbird.jpg",
-      "Black Phoebe": "/black phoebe.jpg",
-      "American Crow": "/american crow.jpg",
-      "European Starling": "/european starling.jpg",
-      "Lesser Goldfinch": "/lesser goldfinch.jpg",
+      "American Coot": "/american-coot.jpg",
+      "Red-shouldered Hawk": "/red-shouldered-hawk.jpg",
+      "Northern Mockingbird": "/northern-mockingbird.jpg",
+      "Black Phoebe": "/black-phoebe.jpg",
+      "American Crow": "/american-crow.jpg",
+      "European Starling": "/european-starling.jpg",
+      "Lesser Goldfinch": "/lesser-goldfinch.jpg",
       "Bushtit": "/bushtit.jpg",
-      "Song Sparrow": "/song sparrow.jpg",
-      "Great Horned Owl": "/great horned owl.jpg"
+      "Song Sparrow": "/song-sparrow.jpg",
+      "Great Horned Owl": "/great-horned-owl.jpg"
     };
     return birdImageMap[birdName] || null;
   };

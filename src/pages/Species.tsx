@@ -92,7 +92,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Red-shouldered Hawk", 
     scientificName: "Buteo lineatus", 
-    image: "/red shouldered hawk.jpg", 
+    image: "/red-shouldered-hawk.jpg", 
     description: "Medium-sized hawk with distinctive reddish shoulder patches and banded tail.", 
     funFact: "Red-shouldered Hawks have incredible eyesight, about 8 times sharper than humans!", 
     habitat: "Wooded areas near water, often seen in the Arboretum.",
@@ -106,7 +106,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Anna's Hummingbird", 
     scientificName: "Calypte anna", 
-    image: "/anna hummingbird.jpg", 
+    image: "/anna-hummingbird.jpg", 
     description: "Medium-sized hummingbird with iridescent rose-pink feathers on the male's head and throat.", 
     funFact: "Anna's Hummingbirds are the only North American hummingbird species that regularly overwinters in northern latitudes.", 
     habitat: "Gardens, parks, and anywhere with nectar-producing flowers.",
@@ -120,7 +120,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "American Crow", 
     scientificName: "Corvus brachyrhynchos", 
-    image: "/american crow.jpg", 
+    image: "/american-crow.jpg", 
     description: "Large, all-black bird with a sturdy bill and squared tail.", 
     funFact: "American Crows are highly intelligent and can use tools and solve complex problems.", 
     habitat: "Diverse habitats including urban areas, farms, and woodlands.",
@@ -134,7 +134,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Great Horned Owl", 
     scientificName: "Bubo virginianus", 
-    image: "/great horned owl.jpg", 
+    image: "/great-horned-owl.jpg", 
     description: "Large owl with prominent ear tufts and piercing yellow eyes.", 
     funFact: "Great Horned Owls have a grip strength of about 300 psi - stronger than most dogs!", 
     habitat: "Diverse habitats from forests to deserts; occasionally spotted in the Arboretum.",
@@ -148,7 +148,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Mourning Dove", 
     scientificName: "Zenaida macroura", 
-    image: "/mourning dove.avif", 
+    image: "/mourning-dove.avif", 
     description: "Slender, grayish-brown dove with black spots on its wings and a long, pointed tail.", 
     funFact: "Mourning Doves can drink brackish water, which helps them survive in arid environments.", 
     habitat: "Open country, parks, suburban areas; very common throughout campus.",
@@ -162,7 +162,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "California Scrub-Jay", 
     scientificName: "Aphelocoma californica", 
-    image: "/california scrub jay.jpg", 
+    image: "/california-scrub-jay.jpg", 
     description: "Blue bird with a gray back/belly and a whitish throat, known for its intelligence.", 
     funFact: "California Scrub-Jays are known to cache thousands of acorns each fall!", 
     habitat: "Oak woodlands, chaparral, suburban gardens; common in the Arboretum.",
@@ -176,7 +176,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "California Towhee", 
     scientificName: "Melozone crissalis", 
-    image: "/california towhee.jpg", 
+    image: "/california-towhee.jpg", 
     description: "Plain brown, sparrow-like bird with a rusty patch under its tail.", 
     funFact: "Masters of the 'double-scratch' feeding technique to uncover seeds and insects.", 
     habitat: "Chaparral, dense shrubs, undergrowth in gardens.",
@@ -190,7 +190,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "House Finch", 
     scientificName: "Haemorhous mexicanus", 
-    image: "/house finch.jpg", 
+    image: "/house-finch.jpg", 
     description: "Small finch; males have rosy red on the head and breast.", 
     funFact: "The red coloration of male House Finches comes from pigments in their food.", 
     habitat: "Ubiquitous in urban and suburban areas, parks, and open woods.",
@@ -204,7 +204,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Lesser Goldfinch", 
     scientificName: "Spinus psaltria", 
-    image: "/lesser goldfinch.jpg", 
+    image: "/lesser-goldfinch.jpg", 
     description: "Tiny finch with a bright yellow underside; males have a black cap.", 
     funFact: "Lesser Goldfinches often feed acrobatically, hanging upside down to reach seeds.", 
     habitat: "Open woodlands, weedy fields, gardens with seed-bearing plants.",
@@ -218,7 +218,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Black Phoebe", 
     scientificName: "Sayornis nigricans", 
-    image: "/black phoebe.jpg", 
+    image: "/black-phoebe.jpg", 
     description: "Small, dark flycatcher with a contrasting white belly; often wags its tail.", 
     funFact: "Frequently builds mud nests under the eaves of buildings or bridges.", 
     habitat: "Near water sources, open areas with low perches for catching insects.",
@@ -232,7 +232,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Northern Mockingbird", 
     scientificName: "Mimus polyglottos", 
-    image: "/northern mockingbird.jpg", 
+    image: "/northern-mockingbird.jpg", 
     description: "Gray bird with white wing patches, known for its incredible ability to mimic other birds.", 
     funFact: "Northern Mockingbirds can learn and mimic over 200 different songs from other birds!", 
     habitat: "Open areas with scattered trees, parks, suburban areas throughout campus.",
@@ -246,7 +246,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "Song Sparrow", 
     scientificName: "Melospiza melodia", 
-    image: "/song sparrow.jpg", 
+    image: "/song-sparrow.jpg", 
     description: "Streaked brown sparrow with a central dark spot on its breast; sings a varied, musical song.", 
     funFact: "Song Sparrows have many regional variations in their songs, almost like local dialects.", 
     habitat: "Dense shrubs, often near water or damp areas; found in the Arboretum and wetter landscaped parts of campus.",
@@ -274,7 +274,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "European Starling", 
     scientificName: "Sturnus vulgaris", 
-    image: "/european starling.jpg", 
+    image: "/european-starling.jpg", 
     description: "Dark bird with iridescent plumage and a pointed yellow bill; introduced species.", 
     funFact: "European Starlings are excellent mimics and can learn human speech and mechanical sounds.", 
     habitat: "Urban and suburban areas, parks, agricultural fields.",
@@ -288,7 +288,7 @@ const birdSpecies: BirdSpecies[] = [
   { 
     name: "American Coot", 
     scientificName: "Fulica americana", 
-    image: "/american coot.jpg", 
+    image: "/american-coot.jpg", 
     description: "Dark gray waterbird with a white bill and lobed toes; often seen swimming in ponds.", 
     funFact: "American Coots are not ducks - they're more closely related to cranes and rails!", 
     habitat: "Ponds, lakes, marshes; commonly seen in the Arboretum pond.",
