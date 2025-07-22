@@ -2,13 +2,23 @@
 
 <div align="center">
 
+<h1 style="font-size:2.5rem; font-weight:bold; margin-bottom:0.2em;">Titan Bird Trails</h1>
+
+---
+
+<em style="font-size:1.2rem; color:#888;">Connecting the CSUF community with nature, one bird at a time.</em>
+
 **Discover the Rich Avian Life of California State University, Fullerton**
+
+<div style="background: linear-gradient(90deg, #e0e7ff 0%, #f0fdfa 100%); padding: 1em 0; border-radius: 12px; margin: 1em 0;">
 
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![AI Powered](https://img.shields.io/badge/AI%20Powered-Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+
+</div>
 
 [🚀 Live Demo](https://birding-csuf.vercel.app/) • [📖 Documentation](#features) • [🤝 Contributing](#contributing)
 
@@ -23,46 +33,53 @@
 
 </div>
 
+---
+
+<div align="center" style="font-size:1.1rem; background: #f8fafc; border-left: 4px solid #a7f3d0; padding: 1em 2em; margin: 1.5em 0; border-radius: 8px;">
+  <strong>🌱 Mission:</strong> <em>"Connecting the CSUF community with nature, one bird at a time, through innovative technology and immersive educational experiences."</em>
+</div>
+
+---
+
+<div align="center" style="font-size:2rem;">✨ • ────── 🐦 ────── • ✨</div>
+
 ## 🌟 What is Titan Bird Trails?
 
 Titan Bird Trails is a revolutionary web platform that combines cutting-edge AI technology with traditional naturalist knowledge to create an unparalleled birding experience at California State University, Fullerton. Whether you're a curious beginner or an experienced birder, our platform offers guided tours, interactive species identification, and AI-powered conversations with local bird species.
-
-### 🎯 Mission Statement
-*"Connecting the CSUF community with nature, one bird at a time, through innovative technology and immersive educational experiences."*
 
 ---
 
 ## ✨ Key Features
 
-### 🤖 **AI Magic** - Revolutionary AI-Powered Experience
-- **💬 Chat with Birds**: Have real conversations with AI personalities of campus bird species
-- **📝 AI Poetry Generator**: Generate custom poems about your favorite birds
-- **🎯 Personalized Birding Tips**: Get AI-generated spotting advice tailored to each species
-- **🎵 Bird Song ID**: *Coming Soon* - Audio-based bird identification
+### 🤖 **AI Magic**
+- 💬 **Chat with Birds**: Real conversations with AI personalities of campus bird species
+- 📝 **AI Poetry Generator**: Custom poems about your favorite birds
+- 🎯 **Personalized Birding Tips**: AI-generated spotting advice for each species
+- 🎵 **Bird Song ID**: *Coming Soon* - Audio-based bird identification
 
-### 🗺️ **Guided Tours** - Professional Birding Experiences
-- **🌿 Arboretum's Natural Treasures** (60min) - Deep dive into CSUF's premier birding hotspot
-- **🏢 Campus Core & Urban Adapters** (30min) - Discover birds around iconic CSUF buildings
-- **🌅 Evening Chorus at the Arboretum** (60min) - Sunset birdsong and roosting behaviors
-- **🌱 Sustainable Landscapes Birding** (30min) - Birds in eco-friendly campus zones
+### 🗺️ **Guided Tours**
+- 🌿 **Arboretum's Natural Treasures** (60min) - Deep dive into CSUF's premier birding hotspot
+- 🏢 **Campus Core & Urban Adapters** (30min) - Discover birds around iconic CSUF buildings
+- 🌅 **Evening Chorus at the Arboretum** (60min) - Sunset birdsong and roosting behaviors
+- 🌱 **Sustainable Landscapes Birding** (30min) - Birds in eco-friendly campus zones
 
-### 📚 **Species Guide** - Comprehensive Bird Database
-- **16 Local Species** with high-quality photography
-- Detailed behavioral descriptions and fun facts
-- Habitat preferences and campus locations
-- Scientific and common names
+### 📚 **Species Guide**
+- 🐦 **16 Local Species** with high-quality photography
+- 📖 Detailed behavioral descriptions and fun facts
+- 🏞️ Habitat preferences and campus locations
+- 🔬 Scientific and common names
 
 ### 🔧 **Interactive Tools**
-- **🧠 Bird Identification Quiz** - Test your knowledge with immediate feedback
-- **🌤️ Weather-Based Recommendations** - Optimal birding conditions tracker
-- **📷 Photography Tips** - Species-specific guidance for bird photography
-- **📅 Seasonal Migration Calendar** - When to spot different species
+- 🧠 **Bird Identification Quiz** - Test your knowledge with immediate feedback
+- 🌤️ **Weather-Based Recommendations** - Optimal birding conditions tracker
+- 📷 **Photography Tips** - Species-specific guidance for bird photography
+- 📅 **Seasonal Migration Calendar** - When to spot different species
 
-### ✅ **Digital Checklist** - Real-Time Data Integration
-- **📊 eBird API Integration** - Live sighting data from Fullerton Arboretum
-- **🏆 Achievement System** - Unlock badges for birding milestones
-- **📈 Personal Progress Tracking** - Individual species discovery logs
-- **🌍 Community Statistics** - Campus-wide birding activity
+### ✅ **Digital Checklist**
+- 📊 **eBird API Integration** - Live sighting data from Fullerton Arboretum
+- 🏆 **Achievement System** - Unlock badges for birding milestones
+- 📈 **Personal Progress Tracking** - Individual species discovery logs
+- 🌍 **Community Statistics** - Campus-wide birding activity
 
 ---
 
@@ -286,6 +303,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-<div align="center">
+<div align="center" style="color:#aaa; font-size:0.9em; margin-top:2em;">
 <sub>Built with 🐦 by students, for students • © 2024 California State University, Fullerton</sub>
 </div> 
