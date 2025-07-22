@@ -1,16 +1,14 @@
-# 🐦 Titan Bird Trails
+# <div align="center" style="font-size:3rem;">🐦🌳✨</div>
 
 <div align="center">
 
-<h1 style="font-size:2.5rem; font-weight:bold; margin-bottom:0.2em;">Titan Bird Trails</h1>
+# **Titan Bird Trails**
 
----
-
-<em style="font-size:1.2rem; color:#888;">Connecting the CSUF community with nature, one bird at a time.</em>
+> <span style="font-size:1.3rem; color:#4f46e5; background:#f1f5f9; border-radius:8px; padding:0.5em 1em; display:inline-block; box-shadow:0 2px 8px #e0e7ff;">Connecting the CSUF community with nature, one bird at a time.</span>
 
 **Discover the Rich Avian Life of California State University, Fullerton**
 
-<div style="background: linear-gradient(90deg, #e0e7ff 0%, #f0fdfa 100%); padding: 1em 0; border-radius: 12px; margin: 1em 0;">
+<div style="background: linear-gradient(90deg, #e0e7ff 0%, #f0fdfa 100%); padding: 1em 0; border-radius: 12px; margin: 1em 0; box-shadow: 0 2px 12px #e0e7ff;">
 
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -20,7 +18,7 @@
 
 </div>
 
-[🚀 Live Demo](https://birding-csuf.vercel.app/) • [📖 Documentation](#features) • [🤝 Contributing](#contributing)
+[🚀 Live Demo](https://birding-csuf.vercel.app/) • [📖 Documentation](#-key-features) • [🤝 Contributing](#-contributing)
 
 ---
 
@@ -32,6 +30,24 @@
 ![GitHub License](https://img.shields.io/github/license/MohitPatni0731/Birding-CSUF)
 
 </div>
+
+---
+
+## 📑 Table of Contents
+- [🌟 What is Titan Bird Trails?](#-what-is-titan-bird-trails)
+- [✨ Key Features](#-key-features)
+- [🛠️ Technology Stack](#-technology-stack)
+- [🚀 Quick Start](#-quick-start)
+- [🐦 Featured Species](#-featured-species)
+- [🎯 Educational Impact](#-educational-impact)
+- [🔒 Security Features](#-security-features)
+- [📱 Browser Support](#-browser-support)
+- [💡 Get Involved](#-get-involved)
+- [🤝 Contributing](#-contributing)
+- [🗓️ Roadmap](#-roadmap)
+- [📄 License](#-license)
+- [🙏 Acknowledgments](#-acknowledgments)
+- [📞 Contact & Support](#-contact--support)
 
 ---
 
@@ -221,6 +237,15 @@ Our platform showcases **16 incredible bird species** found on CSUF campus:
 
 ---
 
+## 💡 Get Involved
+
+<div align="center" style="background:#f1f5f9; border-left:4px solid #818cf8; border-radius:8px; padding:1em 2em; margin:1.5em 0; font-size:1.1rem;">
+  <strong>🌟 Want to help make Titan Bird Trails even better?</strong><br>
+  <em>We welcome your ideas, code, and feedback! See below for how to contribute.</em>
+</div>
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions from the community! Here's how you can help:
@@ -303,6 +328,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-<div align="center" style="color:#aaa; font-size:0.9em; margin-top:2em;">
-<sub>Built with 🐦 by students, for students • © 2024 California State University, Fullerton</sub>
+<div align="center" style="color:#aaa; font-size:1.1em; margin-top:2em;">
+<sub>Made with ❤️ & 🐦 by students, for students • © 2024 California State University, Fullerton</sub>
 </div> 
