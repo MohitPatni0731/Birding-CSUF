@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Titan Bird Trails Logo](./public/favicon.ico)
+![Titan Bird Trails Logo]()
 
 **Discover the Rich Avian Life of California State University, Fullerton**
 
@@ -149,26 +149,6 @@ npm run preview
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-### 🏠 Home Page
-![Home Page](./public/ARB_lake.jpg)
-*Interactive landing hub with AI-powered tour recommendations*
-
-### 🤖 AI Magic
-![AI Features](./public/PA_mountains.jpg)
-*Chat with birds, generate poems, and get personalized birding tips*
-
-### 🗺️ Guided Tours
-![Guided Tours](./public/LIB_day.jpg)
-*Professional birding experiences with real-time navigation*
-
-</div>
-
----
-
 ## 🐦 Featured Species
 
 Our platform showcases **16 incredible bird species** found on CSUF campus:
@@ -250,14 +230,6 @@ We welcome contributions from the community! Here's how you can help:
 ---
 
 ## 🗓️ Roadmap
-
-### 🚀 Upcoming Features
-- [ ] **📱 Mobile App** - Native iOS/Android applications
-- [ ] **🥽 Augmented Reality** - AR bird identification overlay
-- [ ] **👥 Social Features** - User profiles and photo sharing
-- [ ] **🧠 Advanced Analytics** - ML behavior prediction
-- [ ] **🎵 Enhanced Audio** - Complete bird song identification
-- [ ] **🌍 Multi-Campus** - Expansion to other universities
 
 ### 🎯 Long-term Vision
 - Academic research partnerships
