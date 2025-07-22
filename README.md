@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![Titan Bird Trails Logo]()
-
 **Discover the Rich Avian Life of California State University, Fullerton**
 
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
