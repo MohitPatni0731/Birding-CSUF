@@ -165,6 +165,8 @@ const customStyles = `
 // API key now loaded from environment variables for security
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
+const EBIRD_API_KEY = import.meta.env.VITE_EBIRD_API_KEY || 'ndsvfikllinn';
+
 interface Tour {
   id: number;
   title: string;
@@ -202,6 +204,87 @@ interface BirdSpecies {
     habitat: string;
 }
 
+// eBird species code mapping for supported birds
+const EBIRD_SPECIES_CODES = {
+  "Anna's Hummingbird": "annahum",
+  "Red-shouldered Hawk": "reshaw",
+  "American Crow": "amecro",
+  "Mourning Dove": "moudov",
+  "California Scrub-Jay": "calscj",
+  "California Towhee": "caltow",
+  "House Finch": "houfin",
+  "Lesser Goldfinch": "lesgol",
+  "Black Phoebe": "bkbpho",
+  "Northern Mockingbird": "normoc",
+  "Wrentit": "wrenti",
+  "Great Horned Owl": "grhowl",
+  "Bushtit": "bushti",
+  "Song Sparrow": "sonspa",
+  "European Starling": "eursta",
+  "American Coot": "amecoo",
+  "Mallard": "mallar"
+};
+
+function formatDate(dateStr) {
+  // Handles both "2025-07-18 08:00" and "2025-07-18"
+  const d = new Date(dateStr.split(' ')[0]);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+async function getRecentSighting(bird) {
+  const speciesCode = EBIRD_SPECIES_CODES[bird.name] || bird.name.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/ /g, '');
+  const hotspots = ['L597155', 'L1284422'];
+  let allSightings = [];
+  for (const locId of hotspots) {
+    try {
+      const res = await fetch(`https://api.ebird.org/v2/data/obs/${locId}/recent/${speciesCode}?maxResults=10`, {
+        headers: { 'X-eBirdApiToken': EBIRD_API_KEY },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          allSightings = allSightings.concat(data);
+        }
+      }
+    } catch {}
+  }
+  // Fallback: bounding box for CSUF campus
+  try {
+    const res = await fetch(
+      `https://api.ebird.org/v2/data/obs/geo/recent/${speciesCode}?lat=33.8805&lng=-117.88525&dist=1&maxResults=10`,
+      { headers: { 'X-eBirdApiToken': EBIRD_API_KEY } }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        allSightings = allSightings.concat(data);
+      }
+    }
+  } catch {}
+
+  // Find the most recent sighting at Fullerton Arboretum
+  const arboretumSighting = allSightings
+    .filter(s => s.locName && s.locName.toLowerCase().includes('arboretum'))
+    .sort((a, b) => new Date(b.obsDt) - new Date(a.obsDt))[0];
+
+  if (arboretumSighting && arboretumSighting.obsDt && arboretumSighting.locName) {
+    return {
+      ...arboretumSighting,
+      formattedDate: formatDate(arboretumSighting.obsDt),
+    };
+  }
+
+  // If not found, fallback to any valid sighting
+  const valid = allSightings.find(s => s.obsDt && s.locName);
+  if (valid) {
+    return {
+      ...valid,
+      formattedDate: formatDate(valid.obsDt),
+    };
+  }
+
+  return null;
+}
 
 const Index = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -629,14 +712,23 @@ Personal Observations:
         setIsAiGeneratingTip(false);
         return;
     }
-    const prompt = `Provide a concise and actionable birding tip (1-2 sentences) specifically for spotting or appreciating the ${bird.name}. Consider its habitat (${bird.habitat}), common behaviors (e.g., from description: "${bird.description}"), or unique characteristics (e.g., fun fact: "${bird.funFact}"). Make the tip practical for an amateur birdwatcher on a university campus or in a local arboretum.`;
+
+    // 1. Try to get a recent sighting
+    let sightingMsg = '';
+    const sighting = await getRecentSighting(bird);
+    if (sighting && sighting.obsDt && sighting.locName) {
+      sightingMsg = `\n\n🟢 Recently spotted at ${sighting.locName} on ${sighting.obsDt}`;
+    }
+
+    // 2. Generate the tip as before
+    const prompt = `Provide a concise and actionable birding tip (1-2 sentences) specifically for spotting or appreciating the ${bird.name}. Consider its habitat (${bird.habitat}), common behaviors (e.g., from description: \"${bird.description}\"), or unique characteristics (e.g., fun fact: \"${bird.funFact}\"). Make the tip practical for an amateur birdwatcher on a university campus or in a local arboretum.`;
 
     const tipText = await callGeminiAPI(prompt);
 
     if (tipText) {
-      setGeneratedTip(tipText);
+      setGeneratedTip(tipText + sightingMsg);
     } else {
-      setGeneratedTip("Hmm, my wisdom feathers are ruffled. Couldn't generate a tip right now. (AI might be busy!)");
+      setGeneratedTip("Hmm, my wisdom feathers are ruffled. Couldn't generate a tip right now. (AI might be busy!)" + sightingMsg);
     }
     setIsAiGeneratingTip(false);
   };
@@ -772,11 +864,12 @@ Personal Observations:
       
       {/* Enhanced Hero Section with animated background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/PA_mountains.jpg')",
-            transform: `translateY(${scrollY * 0.2}px) scale(1.05)`
+            backgroundImage: `url('/ARB_lake.jpg')`,
+            backgroundPosition: 'center center',
+            backgroundAttachment: 'fixed'
           }}
         ></div>
         {/* Enhanced gradient overlays */}
@@ -1295,124 +1388,74 @@ Personal Observations:
               </div>
             </Card>
 
-            {/* Bird Song ID (Soon!) */}
-            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                <div className="relative bg-white rounded-xl m-0.5 p-3">
-                  <CardHeader className="p-0 mb-3">
-                      <div className="flex items-center gap-2">
-                          <div className="p-1.5 bg-gradient-to-tr from-teal-500 to-cyan-500 rounded shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Mic className="h-5 w-5 text-white" />
-                          </div>
-                          <div>
-                              <CardTitle className="text-lg font-light text-gray-800 group-hover:text-teal-700 transition-colors duration-300">Bird Song ID (Soon!)</CardTitle>
-                              <CardDescription className="text-gray-500 font-light text-xs">Upload a recording to identify a bird by its song.</CardDescription>
-                          </div>
-                      </div>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                      <div className="mb-5">
-                          <div className="w-full h-12 rounded-xl border-2 border-gray-200 bg-gray-50 flex items-center px-4 text-gray-400">
-                              <Mic className="h-4 w-4 mr-2" />
-                              <span className="text-sm">Audio file upload (coming soon)</span>
-                          </div>
-                      </div>
-                      
-                      <div className="h-64 w-full rounded-xl border-2 border-dashed border-gray-300 p-4 mb-4 bg-gradient-to-br from-gray-50 to-teal-50/30 group-hover:border-teal-300 transition-colors duration-300">
-                          <div className="flex flex-col items-center justify-center h-full text-center">
-                              <div className="p-4 bg-white rounded-full shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300">
-                                  <UploadCloud className="h-10 w-10 text-gray-400 group-hover:text-teal-500 transition-colors duration-300"/>
-                              </div>
-                              <p className="text-sm text-gray-600 font-medium mb-2">Recording upload feature coming soon</p>
-                              <p className="text-xs text-gray-400 mb-4">Drag & drop audio files or click to browse</p>
-                              <div className="px-4 py-2 bg-teal-50 border border-teal-200 rounded-full">
-                                  <span className="text-xs text-teal-700 font-medium">Future Enhancement</span>
-                              </div>
-                          </div>
-                      </div>
-                      
-                      <div className="flex gap-3">
-                          <Button 
-                              disabled 
-                              className="flex-1 bg-gray-300 text-gray-500 h-12 rounded-xl cursor-not-allowed"
-                          >
-                              <UploadCloud className="mr-2 h-5 w-5" />
-                              Upload Audio
-                          </Button>
-                          <Button 
-                              disabled 
-                              className="bg-gradient-to-r from-teal-300 to-cyan-300 text-gray-500 h-12 px-6 rounded-xl cursor-not-allowed"
-                          >
-                              <Sparkles className="h-5 w-5" />
-                          </Button>
-                      </div>
-                  </CardContent>
-                </div>
-            </Card>
 
-            {/* Personalized Birding Tip */}
-            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                <div className="relative bg-white rounded-xl m-0.5 p-3">
-                  <CardHeader className="p-0 mb-3">
-                      <div className="flex items-center gap-2">
-                          <div className="p-1.5 bg-gradient-to-tr from-amber-500 to-orange-500 rounded shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Brain className="h-5 w-5 text-white" />
-                          </div>
-                          <div>
-                              <CardTitle className="text-lg font-light text-gray-800 group-hover:text-orange-700 transition-colors duration-300">Personalized Birding Tip</CardTitle>
-                              <CardDescription className="text-gray-500 font-light text-xs">Get an AI-generated tip for a specific bird.</CardDescription>
-                          </div>
-                      </div>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                      <div className="mb-5">
-                          <Select onValueChange={setSelectedBirdForTip} value={selectedBirdForTip || ""}>
-                              <SelectTrigger className="w-full h-12 rounded-xl border-2 border-gray-200 hover:border-orange-300 transition-colors duration-300">
-                                  <SelectValue placeholder="Select a bird for a tip..." />
-                              </SelectTrigger>
-                              <SelectContent className="rounded-xl">
-                                  {birdSpecies.map(bird => (
-                                      <SelectItem key={bird.name} value={bird.name} className="rounded-lg">{bird.name}</SelectItem>
-                                  ))}
-                              </SelectContent>
-                          </Select>
-                      </div>
+            {/* Personalized Birding Tip - now full width */}
+            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2 md:col-span-2">
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+              <div className="relative bg-white rounded-xl m-0.5 p-3">
+                <CardHeader className="p-0 mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1.5 bg-gradient-to-tr from-amber-500 to-orange-500 rounded shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Brain className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg font-light text-gray-800 group-hover:text-orange-700 transition-colors duration-300">Campus Bird Finder</CardTitle>
+                      <CardDescription className="text-gray-500 font-light text-xs">Get AI help to find your favorite bird on campus</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="mb-5">
+                    <Select onValueChange={setSelectedBirdForTip} value={selectedBirdForTip || ""}>
+                      <SelectTrigger className="w-full h-12 rounded-xl border-2 border-gray-200 hover:border-orange-300 transition-colors duration-300">
+                        <SelectValue placeholder="Select a bird for a tip..." />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl">
+                        {birdSpecies.map(bird => (
+                          <SelectItem key={bird.name} value={bird.name} className="rounded-lg">{bird.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                      <div className="h-64 w-full rounded-xl border-2 border-gray-200 p-4 mb-4 bg-gradient-to-br from-gray-50 to-orange-50/30">
-                          {!selectedBirdForTip && (
-                              <div className="flex flex-col items-center justify-center h-full text-center">
-                                  <Brain className="h-12 w-12 text-orange-400 mx-auto mb-3 animate-pulse" />
-                                  <p className="text-sm text-gray-500">Select a bird to get personalized tips!</p>
-                              </div>
-                          )}
-                          {isAiGeneratingTip && (
-                              <div className="flex flex-col items-center justify-center h-full text-center">
-                                  <Loader2 className="h-12 w-12 animate-spin text-orange-500 mx-auto" />
-                                  <p className="text-gray-500 mt-3 text-sm animate-pulse">Brewing a wise tip...</p>
-                              </div>
-                          )}
-                          {generatedTip && !isAiGeneratingTip && (
-                              <ScrollArea className="h-full">
-                                  <div className="p-4 bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg shadow-inner h-full">
-                                      <p className="text-sm text-gray-700 leading-relaxed">{generatedTip}</p>
-                                  </div>
-                              </ScrollArea>
-                          )}
+                  <div className="h-56 w-full rounded-xl border-2 border-gray-200 p-4 mb-4 bg-gradient-to-br from-gray-50 to-orange-50/30 flex flex-col justify-center">
+                    {generatedTip && generatedTip.includes('🟢 Recently spotted') && (
+                      <div className="flex items-center gap-2 mb-3 px-3 py-2 rounded-lg bg-gradient-to-r from-green-100 to-green-50 border border-green-200 shadow-sm animate-fade-in-up">
+                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-400 text-white mr-2"><Sparkles className="w-4 h-4" /></span>
+                        <span className="text-green-800 font-medium text-sm">{generatedTip.split('🟢 Recently spotted')[1].trim()}</span>
                       </div>
-                      
-                      <div className="flex gap-3">
-                          <Button 
-                              onClick={handleGenerateTip} 
-                              disabled={isAiGeneratingTip || !selectedBirdForTip} 
-                              className="flex-1 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 h-12 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                          >
-                              {isAiGeneratingTip ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : <Sparkles className="mr-2 h-5 w-5" />}
-                              Generate Tip
-                          </Button>
+                    )}
+                    {/* Campus map link if sighting is at Arboretum or McCarthy Hall */}
+                    {generatedTip && generatedTip.includes('🟢 Recently spotted') && (() => {
+                      const match = generatedTip.match(/🟢 Recently spotted at ([^\n]+) on/);
+                      const loc = match && match[1] ? match[1] : '';
+                      if (loc && (loc.toLowerCase().includes('arboretum') || loc.toLowerCase().includes('mccarthy'))) {
+                        return (
+                          <div className="mt-1 text-xs text-green-700">
+                            📍 See on campus map: <a href="https://www.fullerton.edu/campusmap/" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-900">{loc}</a>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
+                    <ScrollArea className="h-full">
+                      <div className="p-2 text-sm text-gray-700 leading-relaxed">
+                        {generatedTip && generatedTip.replace(/\n?🟢 Recently spotted.*/s, '').trim()}
                       </div>
-                  </CardContent>
-                </div>
+                    </ScrollArea>
+                    <div className="flex gap-3 mt-2">
+                      <Button 
+                        onClick={handleGenerateTip} 
+                        disabled={isAiGeneratingTip || !selectedBirdForTip} 
+                        className="flex-1 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 h-12 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                      >
+                        {isAiGeneratingTip ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : <Sparkles className="mr-2 h-5 w-5" />}
+                        Generate Tip
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </div>
             </Card>
           </div>
         </div>
@@ -1469,11 +1512,6 @@ Personal Observations:
             <span className="text-gray-600 font-light text-xl">CSUF Titan Bird Trails</span>
           </div>
           <div className="w-24 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 mx-auto mb-8"></div>
-          <p className="text-gray-500 text-sm font-light leading-relaxed max-w-3xl mx-auto">
-            © {new Date().getFullYear()} California State University, Fullerton. All Rights Reserved. <br />
-            Landscape and bird information based on public CSUF resources and general ornithological knowledge. <br />
-            <span className="text-green-600 font-medium">API keys are securely managed via environment variables.</span>
-          </p>
         </div>
       </footer>
 

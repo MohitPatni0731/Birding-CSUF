@@ -109,6 +109,50 @@ const birdSpecies: BirdSpecies[] = [
 
 // API key now loaded from environment variables for security
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const EBIRD_API_KEY = import.meta.env.VITE_EBIRD_API_KEY || 'ndsvfikllinn';
+
+// Helper: Try to get recent sightings for a species in the Fullerton Arboretum/CSUF area
+async function getRecentSighting(bird: BirdSpecies) {
+  // eBird species codes are usually the lowercase, no-space, no-apostrophe version of the common name
+  // For a robust solution, you would map names to eBird species codes. For now, try a best-effort guess:
+  const speciesCode = bird.name
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '')
+    .replace(/ /g, '');
+
+  // Fullerton Arboretum hotspot: L597155
+  // CSU Fullerton--McCarthy Hall hotspot: L1284422
+  // We'll check both, and fallback to a bounding box if needed
+  const hotspots = ['L597155', 'L1284422'];
+  for (const locId of hotspots) {
+    try {
+      const res = await fetch(`https://api.ebird.org/v2/data/obs/${locId}/recent/${speciesCode}?maxResults=1`, {
+        headers: { 'X-eBirdApiToken': EBIRD_API_KEY },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          return data[0];
+        }
+      }
+    } catch {}
+  }
+  // Fallback: bounding box for CSUF campus
+  // NW: 33.8839, -117.8880 | SE: 33.8772, -117.8825
+  try {
+    const res = await fetch(
+      `https://api.ebird.org/v2/data/obs/geo/recent/${speciesCode}?lat=33.8805&lng=-117.88525&dist=1&maxResults=1`,
+      { headers: { 'X-eBirdApiToken': EBIRD_API_KEY } }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        return data[0];
+      }
+    }
+  } catch {}
+  return null;
+}
 
 const AIMagic = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -262,14 +306,23 @@ const AIMagic = () => {
         setIsAiGeneratingTip(false);
         return;
     }
-    const prompt = `Provide a concise and actionable birding tip (1-2 sentences) specifically for spotting or appreciating the ${bird.name}. Consider its habitat (${bird.habitat}), common behaviors (e.g., from description: "${bird.description}"), or unique characteristics (e.g., fun fact: "${bird.funFact}"). Make the tip practical for an amateur birdwatcher on a university campus or in a local arboretum.`;
+
+    // 1. Try to get a recent sighting
+    let sightingMsg = '';
+    const sighting = await getRecentSighting(bird);
+    if (sighting && sighting.obsDt && sighting.locName) {
+      sightingMsg = `\n\n🟢 Recently spotted at ${sighting.locName} on ${sighting.obsDt}`;
+    }
+
+    // 2. Generate the tip as before
+    const prompt = `Provide a concise and actionable birding tip (1-2 sentences) specifically for spotting or appreciating the ${bird.name}. Consider its habitat (${bird.habitat}), common behaviors (e.g., from description: \"${bird.description}\"), or unique characteristics (e.g., fun fact: \"${bird.funFact}\"). Make the tip practical for an amateur birdwatcher on a university campus or in a local arboretum.`;
 
     const tipText = await callGeminiAPI(prompt);
 
     if (tipText) {
-      setGeneratedTip(tipText);
+      setGeneratedTip(tipText + sightingMsg);
     } else {
-      setGeneratedTip("Hmm, my wisdom feathers are ruffled. Couldn't generate a tip right now. (AI might be busy!)");
+      setGeneratedTip("Hmm, my wisdom feathers are ruffled. Couldn't generate a tip right now. (AI might be busy!)" + sightingMsg);
     }
     setIsAiGeneratingTip(false);
   };
