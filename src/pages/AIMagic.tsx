@@ -594,63 +594,8 @@ const AIMagic = () => {
               </div>
             </Card>
 
-            {/* Bird Song ID (Soon!) */}
-            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                <div className="relative bg-white rounded-xl m-0.5 p-3">
-                  <CardHeader className="p-0 mb-3">
-                      <div className="flex items-center gap-2">
-                          <div className="p-1.5 bg-gradient-to-tr from-teal-500 to-cyan-500 rounded shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Mic className="h-5 w-5 text-white" />
-                          </div>
-                          <div>
-                              <CardTitle className="text-lg font-light text-gray-800 group-hover:text-teal-700 transition-colors duration-300">Bird Song ID (Soon!)</CardTitle>
-                              <CardDescription className="text-gray-500 font-light text-xs">Upload a recording to identify a bird by its song.</CardDescription>
-                          </div>
-                      </div>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                      <div className="mb-5">
-                          <div className="w-full h-12 rounded-xl border-2 border-gray-200 bg-gray-50 flex items-center px-4 text-gray-400">
-                              <Mic className="h-4 w-4 mr-2" />
-                              <span className="text-sm">Audio file upload (coming soon)</span>
-                          </div>
-                      </div>
-                      
-                      <div className="h-64 w-full rounded-xl border-2 border-dashed border-gray-300 p-4 mb-4 bg-gradient-to-br from-gray-50 to-teal-50/30 group-hover:border-teal-300 transition-colors duration-300">
-                          <div className="flex flex-col items-center justify-center h-full text-center">
-                              <div className="p-4 bg-white rounded-full shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300">
-                                  <UploadCloud className="h-10 w-10 text-gray-400 group-hover:text-teal-500 transition-colors duration-300"/>
-                              </div>
-                              <p className="text-sm text-gray-600 font-medium mb-2">Recording upload feature coming soon</p>
-                              <p className="text-xs text-gray-400 mb-4">Drag & drop audio files or click to browse</p>
-                              <div className="px-4 py-2 bg-teal-50 border border-teal-200 rounded-full">
-                                  <span className="text-xs text-teal-700 font-medium">Future Enhancement</span>
-                              </div>
-                          </div>
-                      </div>
-                      
-                      <div className="flex gap-3">
-                          <Button 
-                              disabled 
-                              className="flex-1 bg-gray-300 text-gray-500 h-12 rounded-xl cursor-not-allowed"
-                          >
-                              <UploadCloud className="mr-2 h-5 w-5" />
-                              Upload Audio
-                          </Button>
-                          <Button 
-                              disabled 
-                              className="bg-gradient-to-r from-teal-300 to-cyan-300 text-gray-500 h-12 px-6 rounded-xl cursor-not-allowed"
-                          >
-                              <Sparkles className="h-5 w-5" />
-                          </Button>
-                      </div>
-                  </CardContent>
-                </div>
-            </Card>
-
-            {/* Personalized Birding Tip */}
-            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2">
+            {/* Personalized Birding Tip - now full width */}
+            <Card className="overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-lg p-4 group hover:shadow-3xl transition-all duration-700 rounded-xl relative transform hover:-translate-y-2 md:col-span-2">
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
                 <div className="relative bg-white rounded-xl m-0.5 p-3">
                   <CardHeader className="p-0 mb-3">
