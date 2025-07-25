@@ -867,7 +867,7 @@ Personal Observations:
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/ARB_lake.jpg')`,
+            backgroundImage: "url('/PA_mountains.jpg')",
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}
