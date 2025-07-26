@@ -39,6 +39,13 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative font-sans">
+      {/* Inject custom styles */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .content-max-width {
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+      `}} />
       {/* Enhanced Navigation */}
       <nav className={`fixed top-0 w-full z-50 border-b transition-all duration-500 ${navBackgroundClass}`}>
         <div className="content-max-width px-4 sm:px-6 lg:px-8">
@@ -130,11 +137,14 @@ const AboutUs = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(59, 130, 246, 0.8) 50%, rgba(147, 51, 234, 0.7) 100%), url('/ARB_lake.jpg')`,
+            backgroundImage: "url('/MH_day.jpg')",
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed'
           }}
         ></div>
+        {/* Light grey gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/30 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8 animate-fade-in-up">

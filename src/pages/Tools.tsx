@@ -283,7 +283,7 @@ const Tools = () => {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
           style={{
-            backgroundImage: "url('/PA_mountains.jpg')",
+            backgroundImage: "url('/ARB_house_day.jpg')",
             transform: `translateY(${scrollY * 0.2}px) scale(1.05)`
           }}
         ></div>

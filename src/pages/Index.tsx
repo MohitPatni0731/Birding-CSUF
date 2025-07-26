@@ -265,7 +265,7 @@ async function getRecentSighting(bird) {
   // Find the most recent sighting at Fullerton Arboretum
   const arboretumSighting = allSightings
     .filter(s => s.locName && s.locName.toLowerCase().includes('arboretum'))
-    .sort((a, b) => new Date(b.obsDt) - new Date(a.obsDt))[0];
+    .sort((a, b) => new Date(b.obsDt).getTime() - new Date(a.obsDt).getTime())[0];
 
   if (arboretumSighting && arboretumSighting.obsDt && arboretumSighting.locName) {
     return {
