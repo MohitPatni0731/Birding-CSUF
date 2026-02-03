@@ -616,7 +616,7 @@ Personal Observations:
   // --- AI Call and other existing useEffects and functions ---
   const callGeminiAPI = async (promptText: string) => {
     setAiError(null);
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
     try {
       const response = await fetch(API_URL, {
